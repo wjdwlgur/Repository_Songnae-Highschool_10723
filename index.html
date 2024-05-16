@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>별자리 아스키 아트</title>
+    <style>
+        body {
+            font-family: monospace; /* 고정폭 글꼴 사용 */
+            background-color: black; /* 배경색을 검은색으로 설정 */
+            color: white; /* 글자색을 흰색으로 설정 */
+            text-align: center; /* 텍스트를 중앙 정렬 */
+            overflow: hidden; /* 페이지 크기를 벗어나는 요소는 보이지 않게 설정 */
+        }
+        pre {
+            font-size: 1.5em; /* 글꼴 크기를 조절하여 별자리가 화면에 잘 보이도록 함 */
+            position: absolute; /* 절대 위치로 설정하여 화면 곳곳에 배치 */
+            opacity: 0; /* 처음에는 투명하게 설정하여 숨김 */
+            transition: opacity 1s; /* opacity 변화에 대해 1초 동안의 트랜지션 효과 추가 */
+        }
+        .numbering {
+            font-size: 0.8em; /* 넘버링의 글꼴 크기를 작게 설정 */
+            position: relative; /* 상대 위치로 설정하여 넘버링을 별자리 위에 배치 */
+            top: -30px; /* 넘버링의 위치를 조절하여 별자리 위로 이동 */
+            left: -30px; /* 넘버링의 위치를 조절하여 별자리 왼쪽으로 이동 */
+            color: gray; /* 넘버링의 색상을 회색으로 설정 */
+        }
+        .constellation-name {
+            font-size: 1.5em; /* 별자리 이름의 글꼴 크기를 크게 설정 */
+            position: absolute; /* 절대 위치로 설정하여 화면 최상단 중앙에 배치 */
+            top: 20px; /* 화면 최상단 중앙으로 이동 */
+            left: 50%; /* 화면 가로 중앙으로 이동 */
+            transform: translateX(-50%); /* 가로로 중앙 정렬 */
+            opacity: 0; /* 처음에는 투명하게 설정하여 숨김 */
+            transition: opacity 1s; /* opacity 변화에 대해 1초 동안의 트랜지션 효과 추가 */
+        }
+    </style>
+</head>
+<body>
+    <div class="constellations">
+        <pre style="left: 10%; top: 20%;" id="constellation1">
+            1
+                   *
+              *    *    *
+           *     *
+              *     *
+                   *
+        </pre>
+
+        <pre style="left: 40%; top: 20%;" id="constellation2">
+            2
+          *
+     *   *    *
+  *        *
+     *      *
+          *
+        </pre>
+
+        <pre style="left: 70%; top: 20%;" id="constellation3">
+            3
+      *       *
+  *        *        *
+      *       *
+         *    *
+            *
+        </pre>
+
+        <pre style="left: 10%; top: 50%;" id="constellation4">
+            4
+                   *
+              *    *    *
+           *     *
+              *     *
+                   *
+        </pre>
+
+        <pre style="left: 40%; top: 50%;" id="constellation5">
+            5
+          *
+     *   *    *
+  *        *
+     *      *
+          *
+        </pre>
+
+        <pre style="left: 70%; top: 50%;" id="constellation6">
+            6
+      *       *
+  *        *        *
+      *       *
+         *    *
+            *
+        </pre>
+    </div>
+    <div class="constellation-name" id="constellationNames">1: Orion, 2: Ursa Major, 3: Cassiopeia, 4: Scorpius, 5: Leo, 6: Cygnus</div>
+
+    <script>
+        // 아스키 아트 및 이름 표시 함수
+        function showConstellations() {
+            const constellations = document.querySelectorAll('.constellations pre');
+            const constellationNames = document.getElementById('constellationNames');
+
+            // 아스키 아트 및 이름 순차적으로 표시
+            constellations.forEach((pre, index) => {
+                setTimeout(() => {
+                    pre.style.opacity = '1';
+                }, 1000 * (index + 1));
+            });
+
+            setTimeout(() => {
+                constellationNames.style.opacity = '1';
+            }, 1000 * constellations.length); // 이름은 마지막에 표시
+        }
+
+        // 페이지 로드시 호출하여 아스키 아트 및 이름 표시
+        showConstellations();
+    </script>
+</body>
+</html>
